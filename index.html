@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="maintag">
+        <div class="slide-container">
+            <div class="image-container">
+                <img class="img-before slider-image" src="https://alcorndesignbuild.com/wp-content/uploads/2022/04/process-before.png"/>
+                <img class="img-after slider-image" src="https://alcorndesignbuild.com/wp-content/uploads/2022/04/process-after.png"/>
+            </div>
+            <input type="range" min="0" max="100" value="50" class="slider"/>
+            <div class="slider-line"></div>
+                <div class="slider-button" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" viewBox="0 0 256 256"><rect width="10" height="10" fill="none"></rect><line x1="128" y1="40" x2="128" y2="216" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><line x1="96" y1="128" x2="16" y2="128" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><polyline points="48 160 16 128 48 96" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></polyline><line x1="160" y1="128" x2="240" y2="128" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><polyline points="208 96 240 128 208 160" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></polyline></svg>
+            </div>
+        </div>
+    </div>
+</div>
+<style type="text/css">
+    .overlay{
+        background-color: hsla(341, 0%, -10%, 0.50);
+        z-index: 3;
+        width: 100vw;
+        height: 100%;
+    }
+    .bg-image{
+        background-image: url('http://4xo.ed3.mwp.accessdomain.com/wp-content/uploads/2022/07/Barrymore-Kitchen-ProjectHeaderImage-1600x775-1-1024x496-1.jpg'); 
+        background-size: cover; 						
+        background-repeat: no-repeat; height: 80vh;
+        overflow: hidden;
+    }
+    *,
+    *::after,
+    *::before{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    .image-container div{
+        display: block;
+        max-width: 100%;
+    }
+    .maintag{
+        display: grid;
+        place-items: center;
+        min-height: 100vh;
+    }
+    .slide-container{
+        display: grid;
+        place-content: center;
+        position: relative;
+        overflow: hidden;
+        --position: 50%;
+    }
+    .image-container{
+        max-width: 1600px;
+        max-height: 60vh;
+/* 				aspect-ratio: 1/1; */
+    }
+    .slider-image{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: left;
+    }
+    .img-before{
+        position: absolute;
+        inset: 0;
+        width: var(--position);
+    }
+    .slider{
+        position: absolute;
+        inset: 0;
+        cursor: pointer;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+    }
+    .slider-line{
+        position: absolute;
+        inset: 0;
+        width: .2rem;
+        height: 100%;
+        background-color: #fff;
+        z-index: 10;
+        left: var(--position);
+        transform: translateX(-50%);
+        pointer-events: none;
+    }
+    .slider-button{
+        position: absolute;
+        background-color: #fff;
+        color: black;
+        padding: .5rem;
+        border-radius: 100vw;
+        place-items: center;
+        top: 50%;
+        left: var(--position);
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+        z-index: 100;
+    }
+    .slider:focus-visible ~ .slider-button{
+        outline: 5px solid black;
+        outline-offset: 3px;
+    }
+</style>
+<script type="text/javascript">
+const container = document.querySelector('.slide-container');
+document.querySelector('.slider').addEventListener('input', (e)=> {
+    container.style.setProperty('--position', `${e.target.value}%`);
+    })
+</script>
+</body>
+</html>
